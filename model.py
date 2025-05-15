@@ -35,12 +35,11 @@ print("\nClassification Report:\n", classification_report(
     y_test, y_pred, target_names=["Healthy", "Moderate", "Critical"])
 )
 
-
 model_filename = "bridge_health_model.pkl"
 joblib.dump(model, model_filename)
 print(f"\nModel saved as: {model_filename}")
 # Sample prediction
-sample = pd.DataFrame([[600, 580, 560],[800,900,950]], columns=["ST355", "ST356", "ST348"])
+sample = pd.DataFrame([[600, 580, 560]], columns=["ST355", "ST356", "ST348"])
 prediction = model.predict(sample)[0]
 probabilities = model.predict_proba(sample)[0]
 conditions = ["Healthy", "Moderate", "Critical"]
